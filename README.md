@@ -1,5 +1,5 @@
 # jQuery.flexa.js
-HTMLエレメントベースのアニメーションを構築するjQueryプラグインです。アニメーションの設定はHTMLのdata-*要素で行います。スライド1枚ごとにエフェクトや時間の調整ができます。
+HTMLエレメントベースのアニメーションを構築するjQueryプラグインです。アニメーションの設定はHTMLのdata-*要素で行います。シーン1枚ごとにエフェクトや時間の調整ができます。
 
 ## demos
 * (Simple)[http://demos.s-uni.net/flexa/]
@@ -20,9 +20,9 @@ Load jquery.buildSlideshow.js after loading jquery.js.
 ## Simplest usage
 
 ### html
-スライドのもととなるHTMLを用意します。HTMLはシンプルな親子構造にします。親要素がアニメーションのフレームとなり、子要素が各シーンとなります。親要素にはflexaを適応するための目印となるdata-flexa-enable="true"を設定します。
+HTMLはシンプルな親子構造にします。親要素がアニメーションのフレームとなり、子要素が各シーンとなります。親要素にはflexaを適応するための目印となるdata-flexa-enable="true"を設定します。
 
-    <ol id="slide" data-flexa-enable="true">
+    <ol id="Flexa" data-flexa-enable="true">
         <li>Slide 1</li>
         <li>Slide 2</li>
         <li>Slide 3</li>
@@ -31,27 +31,27 @@ Load jquery.buildSlideshow.js after loading jquery.js.
 例はol > liとしてマークアップしていますが、任意の要素でかまいません。
 
 ### css
-スライドのサイズを指定します。また、親要素はstatic以外のポジションを設定し、overflow:hidden;を設定します。これは子要素がposition: absolute;としてアニメーションするためです。
+サイズを指定します。また、親要素はstatic以外のポジションを設定し、overflow:hidden;を設定します。これは子要素がposition: absolute;としてアニメーションするためです。
 
-    #id {
+    #Flexa {
         position: relative;
         overflow: hidden;
     }
-    #id,
-    #id li {
+    #Flexa,
+    #Flexa li {
         width: 640px;
         height: 480px;
     }
 
-以上でデフォルトの状態でスライドショーが実行されます。
+以上でデフォルトの状態でアニメーションが実行されます。
 
-## how to setting
+## Settings
 設定をする場合は要素にdata-*属性で指定していきます。それぞれの内容は後述します。
 
 ### Global
-親要素に設定すると、子要素すべてのスライドがその設定で切り替わります。
+親要素に設定すると、子要素すべてのシーンがその設定で切り替わります。
 
-    <ol id="slide"
+    <ol id="Flexa"
         data-duration="3000"
         data-transition="fade"
         data-timing="cross">
@@ -63,7 +63,7 @@ Load jquery.buildSlideshow.js after loading jquery.js.
 ### Individual
 子要素に設定すると、その子要素だけの設定を行うことができます。
 
-    <ol id="slide"
+    <ol id="Flexa"
       data-duration="3000"
       data-transition="fade"
       data-timing="cross">
@@ -101,8 +101,8 @@ default:true
 
 default:true
 
-### Slide settings
-スライドの切り替えについての設定です。親要素、子要素どちらでも設定できます。
+### Scene settings
+シーンの切り替えについての設定です。親要素、子要素どちらでも設定できます。
 
 * wait
 * duration
@@ -118,7 +118,7 @@ default:true
 * delay
 
 #### wait
-ひとつのスライドが表示されている時間を設定します。単位はミリ秒です。
+ひとつのシーンが表示されている時間を設定します。単位はミリ秒です。
 
 ##### value
 * Number
@@ -126,7 +126,7 @@ default:true
 default: 3000
 
 #### duration
-スライドが現れるときと消えるときにかかる時間を設定します。単位はミリ秒です。
+シーンが現れるときと消えるときにかかる時間を設定します。単位はミリ秒です。
 
 ##### value
 * Number
@@ -134,7 +134,7 @@ default: 3000
 default: 1000
 
 #### in-duration
-スライドが現れるときの時間を設定します。単位はミリ秒です。durationの設定はin-durationで上書きされます。
+シーンが現れるときの時間を設定します。単位はミリ秒です。durationの設定はin-durationで上書きされます。
 
 ##### value
 * Number
@@ -142,7 +142,7 @@ default: 1000
 default: 設定なし(null)
 
 #### out-duration
-スライドが消えるときの時間を設定します。単位はミリ秒です。durationの設定はout-durationで上書きされます。
+シーンが消えるときの時間を設定します。単位はミリ秒です。durationの設定はout-durationで上書きされます。
 
 ##### value
 * Number
@@ -150,58 +150,58 @@ default: 設定なし(null)
 default: 設定なし(null)
 
 #### transition
-スライドが現れるときと消えるときのエフェクトを設定します。複数指定して組み合わせることもできます。複数設定するときはスペースで区切ります。複数設定の際は後ろにあるものが優先されます。
+シーンが現れるときと消えるときのエフェクトを設定します。複数指定して組み合わせることもできます。複数設定するときはスペースで区切ります。複数設定の際は後ろにあるものが優先されます。
 
 ##### value
-* left
+* left  
 左から現れ、左へ消えます
-* right
+* right  
 右から現れ、右へ消えます
-* top
+* top  
 上から現れ、上へ消えます
-* bottom
+* bottom  
 下から現れ、下へ消えます
-* fade
+* fade  
 フェードイン、フェードアウトします
-* none
+* none  
 なにもしません。突然現れて、突然消えます。
 
 default: fade
 
 #### in-transition
-スライドが現れるときのエフェクトを指定します。複数指定して組み合わせることもできます。複数設定するときはスペースで区切ります。複数設定の際は後ろにあるものが優先されます。transitionの設定はin-transitionで上書きされます。
+シーンが現れるときのエフェクトを指定します。複数指定して組み合わせることもできます。複数設定するときはスペースで区切ります。複数設定の際は後ろにあるものが優先されます。transitionの設定はin-transitionで上書きされます。
 
 ##### value
-* left
+* left  
 左から現れます。
-* right
+* right  
 右から現れます。
-* top
+* top  
 上から現れます。
-* bottom
+* bottom  
 下から現れます。
-* fade
+* fade  
 フェードインします。
-* none
+* none  
 なにもしません。突然現れます。
 
 default: 設定なし(null)
 
 #### out-transition
-スライドが消えるときのエフェクトを指定します。複数指定して組み合わせることもできます。複数設定するときはスペースで区切ります。複数設定の際は後ろにあるものが優先されます。transitionの設定はout-transitionで上書きされます。
+シーンが消えるときのエフェクトを指定します。複数指定して組み合わせることもできます。複数設定するときはスペースで区切ります。複数設定の際は後ろにあるものが優先されます。transitionの設定はout-transitionで上書きされます。
 
 ##### value
-* left
+* left  
 左へ消えます。
-* right
+* right  
 右へ消えます。
-* top
+* top  
 上へ消えます。
-* bottom
+* bottom  
 下へ消えます。
-* fade
+* fade  
 フェードアウトします。
-* none
+* none  
 なにもしません。突然消えます。
 
 default: 設定なし(null)
@@ -209,10 +209,10 @@ default: 設定なし(null)
 #### out-hidden
 
 ##### value
-*true
-画面外へ消えた後、display:noneになります。(スライドにjQueryのhideを実行します。)
-*false
-画面外へ消えた後、特に何もしません。out-transitionのnoneと組み合わせて、スライドを重ねていったり、最後のスライドを表示したままにしたりできます。
+*true  
+画面外へ消えた後、display:noneになります。(シーンにjQueryのhideを実行します。)
+*false  
+画面外へ消えた後、特に何もしません。out-transitionのnoneと組み合わせて、シーンを重ねていったり、最後のシーンを表示したままにしたりできます。
 
 default: true
 
