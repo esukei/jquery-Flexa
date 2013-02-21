@@ -1,4 +1,4 @@
-# jQuery.flexa.js
+# jQuery.Flexa.js
 HTMLエレメントベースのアニメーションを構築するjQueryプラグインです。アニメーションの設定はHTMLのdata-*要素で行います。シーン1枚ごとにエフェクトや時間の調整ができます。
 
 ## demos
