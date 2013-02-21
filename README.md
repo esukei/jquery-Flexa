@@ -209,9 +209,9 @@ default: 設定なし(null)
 #### out-hidden
 
 ##### value
-*true  
+* true  
 画面外へ消えた後、display:noneになります。(シーンにjQueryのhideを実行します。)
-*false  
+* false  
 画面外へ消えた後、特に何もしません。out-transitionのnoneと組み合わせて、シーンを重ねていったり、最後のシーンを表示したままにしたりできます。
 
 default: true
