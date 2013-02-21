@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Flexa - Flexible Animation builder : jQuery Plugin</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+	<script src="../jquery.flexa.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/demo.css" media="all">
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=146970392129352";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<header>
+	<h1><span class="Flexa">Flexa</span><span class="FlexaCopy"> - Flexible Animation builder</span></h1>
+</header>
+<div id="main">
+<ol class="slideshow"
+	data-flexa-enable="true"
+	data-autoplay="true"
+	data-loop="false"
+	data-in-timing="sequence"
+	data-easing="swing">
+	<li
+		data-wait="3500"
+		data-in-duration="2000">
+		<h1 class="title Flexa">Flexa</h1>
+		<p class="FlexaCopy">Flexible Animation builder : jQuery Plugin</p>
+	</li>
+	<li>
+		<h1>HTML + CSSで見た目をつくり</h1>
+<pre id="html">
+&lt;ol data-flexa-enable="true"&gt;
+	&lt;li&gt;slide 1&lt;/li&gt;
+	&lt;li&gt;slide 2&lt;/li&gt;
+	&lt;li&gt;slide 3&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+<pre id="css">
+ol {
+	position: relative;
+}
+ol, li {
+	width: 640px;
+	height: 360px;
+}
+</pre>
+	</li>
+	<li id="LoadScripts">
+		<h1>jQueryと<span class="Flexa">Flexa</span>を読み込むだけで</h1>
+<pre id="js">
+&lt;script src="jquery.js"&gt;&lt;/script&gt;
+&lt;script src="jquery.flexa.js"&gt;&lt;/script&gt;
+</pre>
+	</li>
+	<li
+		class="exp"
+		data-in-transition="left"
+		data-out-transition="right fade"
+		data-out-duration="600">
+	<p id="exp1">アニメーションを</p>
+	</li>
+	<li
+		class="exp"
+		data-in-timing="same"
+		data-in-delay="200"
+		data-in-transition="right"
+		data-out-transition="left fade"
+		data-out-duration="600">
+		<p id="exp2">フレキシブルに</p>
+	</li>
+	<li
+		class="exp"
+		data-in-timing="same"
+		data-in-delay="400"
+		data-in-transition="left"
+		data-out-transition="right fade"
+		data-out-duration="600">
+		<p id="exp3">簡単につくることが出来ます</p>
+	</li>
+	<li
+		id="ED"
+		data-in-timing="cross"
+		data-in-duration="3000"
+		data-out-transition="none"
+		data-out-hidden="false">
+		<h1 class="title Flexa">Flexa</h1>
+		<p>
+			<a href="https://github.com/esukei/jquery-flexa">Github</a><a href="http://plugins.jquery.com/flexa/">jQuery Plugin Registry</a>
+		</p>
+	</li>
+</ol>
+</div>
+<footer>
+	<a href="https://twitter.com/share" class="twitter-share-button" data-via="esukei" data-lang="ja">ツイート</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script><div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+</footer>
+</body>
+</html>

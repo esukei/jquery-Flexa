@@ -1,0 +1,150 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+html, body, header, footer, nav, ul, ol, li, h1, p {
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+}
+html, body {
+	width: 100%;
+	background-color: #E3E3E3;
+	font-family: serif;
+}
+body {
+	color: #555;
+}
+.Flexa {
+	font-family: 'Ubuntu Condensed', sans-serif;
+}
+.FlexaCopy {
+	color: #777;
+	font-weight: normal;
+}
+
+header {
+	width: 100%;
+	height: 100px;
+	background-color: #333;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, .4);
+	z-index: 100;
+}
+header h1 {
+	width: 640px;
+	height: 100px;
+	margin: 0 auto;
+	padding: 0 44px;
+	color: #FFF;
+	line-height: 100px;
+	font-size: 24px;
+	text-align: left;
+	font-weight: normal;
+}
+header h1 .Flexa {
+	font-size: 60px;
+}
+
+.slideshow {
+	list-style: none;
+	position: relative;
+	overflow: hidden;
+	margin: 44px auto;
+	background-color: #FCFCFC;
+	color: #333;
+	box-shadow: 0 0 16px 0 rgba(0, 0, 0, .1);
+}
+.slideshow,
+.slideshow li {
+	width: 640px;
+	height: 360px;
+}
+.slideshow li {
+	text-align: center;
+	background-color: #FFF;
+}
+.slideshow li h1 {
+	font-size: 21px;
+	margin: 22px;
+	font-weight: normal;
+}
+.slideshow li pre {
+	text-align: left;
+	font-size: 16px;
+	padding: 11px;
+	margin: 11px;
+	color: #3c3c3c;
+	background-color: #F0F0F0;
+	border-radius: 4px;
+	box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, .1) inset;
+}
+.slideshow li .title {
+	font-size: 60px;
+	margin-top: 102px;
+	height: 88px;
+	line-height: 88px;
+}
+#LoadScripts .Flexa {
+	font-size: 24px;
+}
+#html,#css,#js {
+}
+#html {
+}
+#css {
+}
+#js {
+}
+.slideshow .exp {
+	background-color: transparent;
+}
+#exp1,#exp2,#exp3 {
+	width: 618px;
+	padding: 0 11px;
+	height: 65px;
+	line-height: 65px;
+	font-size: 28px;
+	position: absolute;
+	left: 0;
+	color: #EEE;
+}
+#exp1 {
+	text-align: right;
+	top: 55px;
+	background-color: #444;
+}
+#exp2 {
+	top: 139px;
+	text-align: left;
+	background-color: #555;
+}
+#exp3 {
+	top: 227px;
+	text-align: right;
+	background-color: #666;
+}
+
+#ED p a {
+	display: inline-block;
+	width: 200px;
+	margin: 0 11px;
+	padding: 11px;
+	background-color: #666;
+	border-radius: 5px;
+	color: #FFF;
+	text-decoration: none;
+	background-image: -webkit-linear-gradient(top, #4c4c4c, #2c2c2c);
+	background-image: linear-gradient(top, #4c4c4c, #2c2c2c);
+	box-shadow: 0 0 4px 0 rgba(255, 255, 255, .6);
+}
+
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	height: 44px;
+	width: 100%;
+	background-color: #444;
+	background-image: -webkit-linear-gradient(top, #444, #111);
+	background-image: linear-gradient(top, #444, #111);
+}

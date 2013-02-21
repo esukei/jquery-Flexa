@@ -1,0 +1,26 @@
+{
+	"name": "flexa",
+	"title": "Flexa - Flexible Animation builder",
+	"description": "HTMLだけで簡単にアニメーションが作れます。You can make animation using only HTML.",
+	"keywords": [
+		"animation",
+		"html",
+		"data"
+	],
+	"version": "0.1.0",
+	"author": {
+		"name": "Satoru Kawahara",
+		"email": "esukei@s-uni.net",
+		"url": "http://blog.s-uni.net/"
+	},
+	"demo": "http://demos.s-uni.net/flexa",
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://www.opensource.org/licenses/MIT"
+		}
+	],
+	"dependencies": {
+		"jquery": ">=1.8"
+	}
+}
