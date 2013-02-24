@@ -117,16 +117,21 @@
 			var
 				$this = $(this);
 			$this.data('isWaiting', false);
+			playNext.call(this, 'cross');
 		},
 		animationEndHandler = function (event) {
 			var
 				$this = $(this);
 
-			if($this.data('sceneId') !== $this.data('nextSceneId')) {
-				playNext.call(this, 'sequence')
-			} else {
-				//trigger all end
-				console.log('stop');
+			if(event.sceneId === $this.data('currentSceneId')) {
+				playNext.call(this, 'sequence');
+			}
+
+			if(event.sceneId === $this.data('nextSceneId')) {
+				$this.trigger({
+					type: 'animationstopflexa',
+					sceneId: event.sceneId
+				});
 			}
 		},
 		/**
