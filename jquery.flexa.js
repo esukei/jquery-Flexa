@@ -26,12 +26,12 @@
 			inTiming: 'cross',
 			inDelay: 0
 		},
-		// force slide position 'absolute'
-		slideStyle = {
+		// force scene position 'absolute'
+		sceneStyle = {
 			position: 'absolute'
 		},
-		//
-		playSlide = function () {
+		//play scene
+		playScene = function (sceneId) {
 			var
 				$this              = $(this),
 				thisData           = $this.data(),
@@ -68,6 +68,7 @@
 				nextSceneId: nextSceneId
 			});
 		},
+		//play next scene
 		playNext = function (timing) {
 			var
 				$this = $(this),
@@ -77,8 +78,8 @@
 			
 			if(scenes[nextSceneId][0].data('inTiming') === timing) playSlide.call(this);
 		},
-		//trigger slideshow event
-		triggerSlideshowEvent = function (type) {
+		//trigger animation event
+		triggerFlexaEvent = function (type) {
 
 			var
 				$this = $(this),
@@ -92,8 +93,8 @@
 					type: type,
 					sceneId: sceneId
 				};
-
-			//trigger if slide is the last sub scene of current scene
+			
+			//trigger if scene is the last sub scene of current scene
 			if(subSceneId === subSceneLength - 1) $frame.trigger(event);
 		},
 		/**
@@ -136,13 +137,13 @@
 			$this.css($this.data('inStyle'));
 			next();
 		},
-		//show slide
-		showSlide = function (next) {
+		//show scene
+		showScene = function (next) {
 			$(this).show();
 			next();
 		},
-		//hide slide
-		hideSlide = function (next) {
+		//hide scnen
+		hideScene = function (next) {
 			var
 				$this = $(this);
 			if($this.data('outHidden')) $this.hide();
@@ -150,30 +151,30 @@
 		},
 		//trigger animation start event
 		triggerAnimationStart = function (next) {
-			triggerSlideshowEvent.call(this, 'animationstartflexa');
+			triggerFlexaEvent.call(this, 'animationstartflexa');
 			next();
 		},
 		//trigger animation wait start event
 		triggerWaitStart = function (next) {
-			triggerSlideshowEvent.call(this, 'waitstartflexa');
 			//set waiting flag
 			$(this)
 				.data('frame')
 				.data('isWaiting', true);
+			triggerFlexaEvent.call(this, 'waitstartflexa');
 			next();
 		},
 		//trigger animation wait end event
 		triggerWaitEnd = function (next) {
-			triggerSlideshowEvent.call(this, 'waitendflexa');
 			//unset waiting flag
 			$(this)
 				.data('frame')
 				.data('isWaiting', false);
+			triggerFlexaEvent.call(this, 'waitendflexa');
 			next();
 		},
 		//trigger animation end event
 		triggerAnimationEnd = function (next) {
-			triggerSlideshowEvent.call(this, 'animationendflexa');
+			triggerFlexaEvent.call(this, 'animationendflexa');
 			next();
 		},
 		/**
@@ -197,22 +198,22 @@
 			return options;
 		},
 		//build and get styles for animation
-		getStyle = function(transitions, frameDimension, slideDimension) {
+		getStyle = function(transitions, frameDimension, sceneDimension) {
 			var
 				transitionArray = transitions.split(" "),
 				transitionLength = transitionArray.length,
-				rightPosition = (frameDimension.width > slideDimension.width) ? frameDimension.width : slideDimension.width,
-				bottomPosition = (frameDimension.height > slideDimension.height) ? frameDimension.height : slideDimension.height,
-				verticalCenter = (slideDimension.width - frameDimension.width) / 2,
-				horizontalCenter = (slideDimension.height - frameDimension. height) / 2,
+				rightPosition = (frameDimension.width > sceneDimension.width) ? frameDimension.width : sceneDimension.width,
+				bottomPosition = (frameDimension.height > sceneDimension.height) ? frameDimension.height : sceneDimension.height,
+				verticalCenter = (sceneDimension.width - frameDimension.width) / 2,
+				horizontalCenter = (sceneDimension.height - frameDimension. height) / 2,
 				leftStyle = {
-					left: -slideDimension.width + 'px'
+					left: -sceneDimension.width + 'px'
 				},
 				rightStyle = {
 					left: rightPosition + 'px'
 				},
 				topStyle = {
-					top: -slideDimension.width + 'px'
+					top: -sceneDimension.width + 'px'
 				},
 				bottomStyle = {
 					top: bottomPosition + 'px'
@@ -267,86 +268,85 @@
 				.children()
 				.each(function (i) {
 					var
-						$slide = $(this),
-						slideDimension = {
-							width: $slide.outerWidth(),
-							height: $slide.outerHeight()
+						$scene = $(this),
+						sceneDimension = {
+							width: $scene.outerWidth(),
+							height: $scene.outerHeight()
 						},
-						slideOptions = buildOptions($slide.data(), thisOptions);
+						sceneOptions = buildOptions($scene.data(), thisOptions);
 	
-					slideOptions.frame = $this;
+					sceneOptions.frame = $this;
 					
 					//build scenes
-					if(slideOptions.inTiming === "same") {
-						scenes[scenes.length - 1].push($slide);
+					if(sceneOptions.inTiming === "same") {
+						scenes[scenes.length - 1].push($scene);
 					} else {
-						scenes.push([$slide]);
+						scenes.push([$scene]);
 					}
 	
 					//save scene id
-					slideOptions.sceneId = scenes.length - 1;
-					slideOptions.subSceneId = scenes[slideOptions.sceneId].length - 1;
+					sceneOptions.sceneId = scenes.length - 1;
+					sceneOptions.subSceneId = scenes[sceneOptions.sceneId].length - 1;
 					
 					//save styles for animation
-					slideOptions.inStyle = getStyle(slideOptions.inTransition, thisDimension, slideDimension);
-					slideOptions.inStyle.zIndex = 1100;
-					slideOptions.waitStyle = getStyle('none', thisDimension, slideDimension);
-					slideOptions.outStyle = getStyle(slideOptions.outTransition, thisDimension, slideDimension);
-					slideOptions.outStyle.zIndex = 1000;
+					sceneOptions.inStyle = getStyle(sceneOptions.inTransition, thisDimension, sceneDimension);
+					sceneOptions.inStyle.zIndex = 1100;
+					sceneOptions.waitStyle = getStyle('none', thisDimension, sceneDimension);
+					sceneOptions.outStyle = getStyle(sceneOptions.outTransition, thisDimension, sceneDimension);
+					sceneOptions.outStyle.zIndex = 1000;
 					
 					//save animation setting
-					slideOptions.inAnimation = {
-						duration: slideOptions.inDuration,
-						easing: slideOptions.inEasing
+					sceneOptions.inAnimation = {
+						duration: sceneOptions.inDuration,
+						easing: sceneOptions.inEasing
 					};
-					slideOptions.outAnimation = {
-						duration: slideOptions.outDuration,
-						easing: slideOptions.outEasing
+					sceneOptions.outAnimation = {
+						duration: sceneOptions.outDuration,
+						easing: sceneOptions.outEasing
 					};
 					
-					//save all parameters except slide frame's data
-					$slide.data({
-						frame: slideOptions.frame,
-						wait: slideOptions.wait,
-						inDuration: slideOptions.inDuration,
-						outDuration: slideOptions.outDuration,
-						inEasing: slideOptions.inEasing,
-						outEasing: slideOptions.outEasing,
-						inTransition: slideOptions.inTransition,
-						outTransition: slideOptions.outDuration,
-						outHidden: slideOptions.outHidden,
-						inTiming: slideOptions.inTiming,
-						inDelay: slideOptions.inDelay,
-						inStyle: slideOptions.inStyle,
-						waitStyle: slideOptions.waitStyle,
-						outStyle: slideOptions.outStyle,
-						sceneId: slideOptions.sceneId,
-						subSceneId: slideOptions.subSceneId
+					//save all parameters except scene frame's data
+					$scene.data({
+						frame: sceneOptions.frame,
+						wait: sceneOptions.wait,
+						inDuration: sceneOptions.inDuration,
+						outDuration: sceneOptions.outDuration,
+						inEasing: sceneOptions.inEasing,
+						outEasing: sceneOptions.outEasing,
+						inTransition: sceneOptions.inTransition,
+						outTransition: sceneOptions.outDuration,
+						outHidden: sceneOptions.outHidden,
+						inTiming: sceneOptions.inTiming,
+						inDelay: sceneOptions.inDelay,
+						inStyle: sceneOptions.inStyle,
+						waitStyle: sceneOptions.waitStyle,
+						outStyle: sceneOptions.outStyle,
+						sceneId: sceneOptions.sceneId,
+						subSceneId: sceneOptions.subSceneId
 					});
-	
 					//build animation queue and save
-					$slide
+					$scene
 						//hide and set default style
 						.hide()
-						.css(slideStyle)
+						.css(sceneStyle)
 						//pause for preventing animation start and trigger events
 						.pauseQueue()
-						.queue(showSlide)
+						.queue(showScene)
 						.queue(setInStyle)
 						//in animation
 						.queue(triggerAnimationStart)
 						//in delay
-						.delay(slideOptions.inDelay)
-						.animate(slideOptions.waitStyle, slideOptions.inAnimation)
+						.delay(sceneOptions.inDelay)
+						.animate(sceneOptions.waitStyle, sceneOptions.inAnimation)
 						//start waiting
 						.queue(triggerWaitStart)
-						.delay(slideOptions.wait)
+						.delay(sceneOptions.wait)
 						.queue(triggerWaitEnd)
 						//out animation
-						.animate(slideOptions.outStyle, slideOptions.outAnimation)
+						.animate(sceneOptions.outStyle, sceneOptions.outAnimation)
 						.queue(triggerAnimationEnd)
 						//hide
-						.queue(hideSlide)
+						.queue(hideScene)
 						//save animation
 						.saveAnimation()
 						//delete all queue above
@@ -356,8 +356,8 @@
 			//save scenes
 			thisOptions.scenes = scenes;
 			//save scene Id for initial start
-			thisOptions.currentSceneId = -1;
-			thisOptions.nextSceneId = 0;
+			thisOptions.currentSceneId = 0;
+			thisOptions.nextSceneId = 1;
 			//init waiting flag
 			thisOptions.isWaiting = false;
 			
@@ -373,11 +373,11 @@
 			if(thisOptions.autoplay) {
 				//already loaded run immediately
 				if(document.readyState === 'complete') {
-					playSlide.call($this, 0);
+					playScene.call($this, 0);
 				} else {
 					//add on load event
 					$win.on('load', function (event) {
-						playSlide.call($this, 0);
+						playScene.call($this, 0);
 					});
 				}
 			}
