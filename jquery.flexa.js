@@ -35,47 +35,52 @@
 			var
 				$this              = $(this),
 				thisData           = $this.data(),
-				previousSceneId    = thisData.currentSceneId,
 				scenes             = thisData.scenes,
-				scenesLength       = scenes.length,
-				currentSceneId     = thisData.nextSceneId,
-				currentScene       = scenes[currentSceneId],
-				currentSceneLength = currentScene.length,
-				nextSceneId,
+				nextScene       = scenes[sceneId],
+				nextSceneLength = nextScene.length,
 				i = 0;
 			
-			//
-			if(currentSceneId === previousSceneId) return;
-			
-			for(i; i < currentSceneLength; ++i) {
-				currentScene[i]
+			for(i; i < nextSceneLength; ++i) {
+				nextScene[i]
 					.playSavedAnimation()
 					.dequeue();
 			}
 
-			if(currentSceneId === scenesLength - 1) {
-				if(thisData.loop) {
-					nextSceneId = 0;
-				} else {
-					nextSceneId = currentSceneId;
-				} 
-			} else {
-				nextSceneId = currentSceneId + 1;
-			}
-			
-			$this.data({
-				currentSceneId: currentSceneId,
-				nextSceneId: nextSceneId
-			});
 		},
 		//play next scene
 		playNext = function (timing) {
 			var
 				$this = $(this),
 				thisData = $this.data(),
+				currentSceneId = thisData.currentSceneId,
 				scenes = thisData.scenes,
+				scenesLength = scenes.length,
 				nextSceneId = thisData.nextSceneId;
 			
+			if(nextSceneId === currentSceneId) return false;
+			
+			if(scenes[nextSceneId][0].data('inTiming') === timing)
+			{
+				playScene.call(this, nextSceneId);
+
+				currentSceneId = nextSceneId;
+				
+				if(currentSceneId === scenesLength - 1) {
+					if(thisData.loop) {
+						nextSceneId = 0;
+					}
+				} else {
+					nextSceneId = currentSceneId + 1;
+				}
+				
+				$this.data({
+					currentSceneId: currentSceneId,
+					nextSceneId: nextSceneId
+				});
+				
+				return true;
+			}
+			return false;
 		},
 		//trigger animation event
 		triggerFlexaEvent = function (type) {
