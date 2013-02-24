@@ -76,7 +76,6 @@
 				scenes = thisData.scenes,
 				nextSceneId = thisData.nextSceneId;
 			
-			if(scenes[nextSceneId][0].data('inTiming') === timing) playSlide.call(this);
 		},
 		//trigger animation event
 		triggerFlexaEvent = function (type) {
@@ -113,8 +112,6 @@
 			var
 				$this = $(this);
 			$this.data('isWaiting', false);
-
-			if($this.data('sceneId') !== $this.data('nextSceneId')) playNext.call(this, 'cross');
 		},
 		animationEndHandler = function (event) {
 			var
@@ -156,19 +153,11 @@
 		},
 		//trigger animation wait start event
 		triggerWaitStart = function (next) {
-			//set waiting flag
-			$(this)
-				.data('frame')
-				.data('isWaiting', true);
 			triggerFlexaEvent.call(this, 'waitstartflexa');
 			next();
 		},
 		//trigger animation wait end event
 		triggerWaitEnd = function (next) {
-			//unset waiting flag
-			$(this)
-				.data('frame')
-				.data('isWaiting', false);
 			triggerFlexaEvent.call(this, 'waitendflexa');
 			next();
 		},
