@@ -1,5 +1,5 @@
 /**
- * jQuery Flexa v0.1.0
+ * jQuery Flexa v0.1.1
  * Flexible Animation builder
  * https://github.com/esukei/jquery-flexa
  * Copyright 2013 Satoru Kawahara
