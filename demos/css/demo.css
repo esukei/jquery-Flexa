@@ -18,11 +18,10 @@ body {
 .Flexa {
 	font-family: 'Ubuntu Condensed', sans-serif;
 }
-.FlexaCopy {
+.Flexa-copy {
 	color: #777;
 	font-weight: normal;
 }
-
 header {
 	width: 100%;
 	height: 100px;
@@ -31,10 +30,10 @@ header {
 	z-index: 100;
 }
 header h1 {
-	width: 640px;
+	width: 980px;
 	height: 100px;
 	margin: 0 auto;
-	padding: 0 44px;
+	padding: 0 22px;
 	color: #FFF;
 	line-height: 100px;
 	font-size: 24px;
@@ -44,107 +43,101 @@ header h1 {
 header h1 .Flexa {
 	font-size: 60px;
 }
+#main {
+	width: 980px;
+	margin: 0 auto 44px;
+	padding: 22px;
+	overflow: hidden;
+}
+#main section {
+	width: 676px;
+	float: left;
+}
 
-.slideshow {
+.animation {
 	list-style: none;
 	position: relative;
 	overflow: hidden;
-	margin: 44px auto;
+	margin: 0 auto 22px;
 	background-color: #FCFCFC;
 	color: #333;
 	box-shadow: 0 0 16px 0 rgba(0, 0, 0, .1);
 }
-.slideshow,
-.slideshow li {
+.animation,
+.animation li {
 	width: 640px;
 	height: 360px;
 }
-.slideshow li {
+
+.animation .scene-1,
+.animation .scene-2,
+.animation .scene-3 {
+	line-height: 360px;
 	text-align: center;
-	background-color: #FFF;
+	font-size: 40px;
 }
-.slideshow li h1 {
-	font-size: 21px;
-	margin: 22px;
-	font-weight: normal;
+.animation .scene-1 {
+	background-color: #FF0066;
 }
-.slideshow li pre {
-	text-align: left;
-	font-size: 16px;
-	padding: 11px;
-	margin: 11px;
-	color: #3c3c3c;
-	background-color: #F0F0F0;
-	border-radius: 4px;
-	box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, .1) inset;
+.animation .scene-2 {
+	background-color: #00FF66;
 }
-.slideshow li .title {
-	font-size: 60px;
-	margin-top: 102px;
-	height: 88px;
-	line-height: 88px;
-}
-#LoadScripts .Flexa {
-	font-size: 24px;
-}
-#html,#css,#js {
-}
-#html {
-}
-#css {
-}
-#js {
-}
-.slideshow .exp {
-	background-color: transparent;
-}
-#exp1,#exp2,#exp3 {
-	width: 618px;
-	padding: 0 11px;
-	height: 65px;
-	line-height: 65px;
-	font-size: 28px;
-	position: absolute;
-	left: 0;
-	color: #EEE;
-}
-#exp1 {
-	text-align: right;
-	top: 55px;
-	background-color: #444;
-}
-#exp2 {
-	top: 139px;
-	text-align: left;
-	background-color: #555;
-}
-#exp3 {
-	top: 227px;
-	text-align: right;
-	background-color: #666;
+.animation .scene-3 {
+	background-color: #0066FF;
 }
 
-#ED p a {
-	display: inline-block;
+.gist {
+	margin-bottom: 44px;
+}
+
+#main-nav {
+	margin-left: 676px;
+}
+
+#main-nav ul {
 	width: 200px;
-	margin: 0 11px;
-	padding: 11px;
-	background-color: #666;
+	margin:0 0 0 auto;
+	list-style: none;
 	border-radius: 5px;
-	color: #FFF;
+	overflow: hidden;
+	background-color: #BBB;
+	font-family: sans-serif;
+	box-shadow: 0 0 8px 0 rgba(0, 0, 0, .2) inset;
+}
+#main-nav ul li {
+	width: 100%;
+	border-bottom: 1px solid #CCC;
+}
+#main-nav ul li:last-child {
+	border-bottom: 0 none;
+}
+#main-nav ul li a {
+	display: block;
+	height: 14px;
+	line-height: 14px;
+	font-size: 14px;
+	padding: 11px;
+	color: #FFFFFF;
 	text-decoration: none;
-	background-image: -webkit-linear-gradient(top, #4c4c4c, #2c2c2c);
-	background-image: linear-gradient(top, #4c4c4c, #2c2c2c);
-	box-shadow: 0 0 4px 0 rgba(255, 255, 255, .6);
 }
 
 footer {
 	position: fixed;
+	z-index: 99999;
 	left: 0;
 	bottom: 0;
-	height: 44px;
 	width: 100%;
 	background-color: #444;
 	background-image: -webkit-linear-gradient(top, #444, #111);
 	background-image: linear-gradient(top, #444, #111);
+}
+footer #share-buttons {
+	width: 980px;
+	margin: 0 auto;
+	height: 20px;
+	padding: 22px;
+	line-height: 20px;
+}
+#share-buttons .fb_iframe_widget {
+	vertical-align: top;
 }
