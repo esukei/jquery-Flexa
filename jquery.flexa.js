@@ -205,51 +205,38 @@
 				bottomPosition = (frameDimension.height > sceneDimension.height) ? frameDimension.height : sceneDimension.height,
 				verticalCenter = (sceneDimension.width - frameDimension.width) / 2,
 				horizontalCenter = (sceneDimension.height - frameDimension. height) / 2,
-				leftStyle = {
-					left: -sceneDimension.width + 'px'
+				styles = {
+					left : {
+						left: -sceneDimension.width + 'px'
+					},
+					right : {
+						left: rightPosition + 'px'
+					},
+					top : {
+						top: -sceneDimension.width + 'px'
+					},
+					bottom : {
+						top: bottomPosition + 'px'
+					},
+					fade : {
+						opacity: 0
+					},
+					none : {
+						opacity: 1,
+						left: horizontalCenter + 'px',
+						top: verticalCenter + 'px'
+					}
 				},
-				rightStyle = {
-					left: rightPosition + 'px'
-				},
-				topStyle = {
-					top: -sceneDimension.width + 'px'
-				},
-				bottomStyle = {
-					top: bottomPosition + 'px'
-				},
-				fadeStyle = {
-					opacity: 0
-				},
-				noneStyle = {
-					opacity: 1,
-					left: horizontalCenter + 'px',
-					top: verticalCenter + 'px'
-				},
-				returnStyle = $.extend({}, noneStyle),
-				i = 0;
+				returnStyle = $.extend({}, styles.none),
+				i = 0,
+				transitionStyle;
 
 			for(i; i < transitionLength; ++i){
-				switch(transitionArray[i]) {
-					case 'left':
-						$.extend(returnStyle, leftStyle);
-						break;
-					case 'right':
-						$.extend(returnStyle, rightStyle);
-						break;
-					case 'top':
-						$.extend(returnStyle, topStyle);
-						break;
-					case 'bottom':
-						$.extend(returnStyle, bottomStyle);
-						break;
-					case 'fade':
-						$.extend(returnStyle, fadeStyle);
-						break;
-					case 'none':
-						$.extend(returnStyle, noneStyle);
-						break;
-				}
+				transitionStyle = styles[transitionArray[i]];
+				if(transitionStyle === undefined) continue;
+				$.extend(returnStyle, transitionStyle);
 			}
+			
 			return returnStyle;
 		},
 		//init
