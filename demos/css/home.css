@@ -1,0 +1,82 @@
+.animation li {
+	text-align: center;
+	background-color: #FFF;
+}
+.animation li h1 {
+	font-size: 21px;
+	margin: 22px;
+	font-weight: normal;
+}
+.animation li pre {
+	text-align: left;
+	font-size: 16px;
+	padding: 11px;
+	margin: 11px;
+	color: #3c3c3c;
+	background-color: #F0F0F0;
+	border-radius: 4px;
+	box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, .1) inset;
+}
+.animation li .title {
+	font-size: 60px;
+	margin-top: 102px;
+	height: 88px;
+	line-height: 88px;
+}
+#scene-scripts .Flexa {
+	font-size: 24px;
+}
+#scene-slideshow {
+	background-color: transparent;
+}
+#scene-slideshow p {
+	height: 65px;
+	margin-top: 147px;
+	font-size: 28px;
+	color: #FFFFFF;
+	line-height: 65px;
+	background-color: rgba(0, 0, 0, .7);
+}
+
+.animation .exp {
+	background-color: transparent;
+}
+#exp1,#exp2,#exp3 {
+	width: 618px;
+	padding: 0 11px;
+	height: 65px;
+	line-height: 65px;
+	font-size: 28px;
+	position: absolute;
+	left: 0;
+	color: #EEE;
+}
+#exp1 {
+	text-align: right;
+	top: 55px;
+	background-color: #444;
+}
+#exp2 {
+	top: 139px;
+	text-align: left;
+	background-color: #555;
+}
+#exp3 {
+	top: 227px;
+	text-align: right;
+	background-color: #666;
+}
+
+#scene-end p a {
+	display: inline-block;
+	width: 200px;
+	margin: 0 11px;
+	padding: 11px;
+	background-color: #666;
+	border-radius: 5px;
+	color: #FFF;
+	text-decoration: none;
+	background-image: -webkit-linear-gradient(top, #4c4c4c, #2c2c2c);
+	background-image: linear-gradient(top, #4c4c4c, #2c2c2c);
+	box-shadow: 0 0 4px 0 rgba(255, 255, 255, .6);
+}
