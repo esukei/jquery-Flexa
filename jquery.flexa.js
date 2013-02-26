@@ -179,22 +179,25 @@
 		/**
 		 * init options
 		 */
-		cascadeOptions = function(optionsObject, targetKey, defaultKey) {
-			if(optionsObject[targetKey] === null) optionsObject[targetKey] = optionsObject[defaultKey];
+		cascadeOption = function(options, defaultOptions, defaultKey, inKey, outKey) {
+			if(options[defaultKey] == undefined){
+				options[defaultKey] = defaultOptions[defaultKey];
+				if(options[inKey] == undefined) options[inKey] = defaultOptions[inKey] || options[defaultKey];
+				if(options[outKey] == undefined) options[outKey] = defaultOptions[outKey] || options[defaultKey];
+			} else {
+				if(options[inKey] == undefined) options[inKey] = options[defaultKey];
+				if(options[outKey] == undefined) options[outKey] = options[defaultKey];
+			}
 		},
 		buildOptions = function (targetData, defaultOptions) {
 			var
-				options = {};
-			$.extend(options, defaultOptions, targetData);
+				options = $.extend({}, targetData);
 
-			cascadeOptions(options, 'inDuration', 'duration');
-			cascadeOptions(options, 'outDuration', 'duration');
-			cascadeOptions(options, 'inEasing', 'easing');
-			cascadeOptions(options, 'outEasing', 'easing');
-			cascadeOptions(options, 'inTransition', 'transition');
-			cascadeOptions(options, 'outTransition', 'transition');
+			cascadeOption(options, defaultOptions, 'duration', 'inDuration', 'outDuration');
+			cascadeOption(options, defaultOptions, 'transition', 'inTransition', 'outTransition');
+			cascadeOption(options, defaultOptions, 'easing', 'inEasing', 'outEasing');
 
-			return options;
+			return $.extend({}, defaultOptions, options);
 		},
 		//build and get styles for animation
 		getStyle = function(transitions, frameDimension, sceneDimension) {
@@ -243,7 +246,8 @@
 		init = function (i) {
 			var
 				$this = $(this),
-				thisOptions = buildOptions($this.data(), _options),
+				thisData = $this.data(),
+				thisOptions = buildOptions(thisData, _options),
 				thisDimension = {
 					width: $this.outerWidth(),
 					height: $this.outerHeight()
@@ -255,12 +259,13 @@
 				.each(function (i) {
 					var
 						$scene = $(this),
+						sceneData = $scene.data(),
 						sceneDimension = {
 							width: $scene.outerWidth(),
 							height: $scene.outerHeight()
 						},
-						sceneOptions = buildOptions($scene.data(), thisOptions);
-	
+						sceneOptions = buildOptions(sceneData, thisOptions);
+					
 					sceneOptions.frame = $this;
 					
 					//build scenes
