@@ -144,6 +144,15 @@
 			$this.css($this.data('inStyle'));
 			next();
 		},
+		highZIndex = 2000,
+		lowZIndex = 1000,
+		//set style for "in" animation 
+		setLowerZIndex = function (next) {
+			var
+				$this = $(this);
+			$this.css({zIndex: lowZIndex});
+			next();
+		},
 		//show scene
 		showScene = function (next) {
 			$(this).show();
@@ -281,10 +290,9 @@
 					
 					//save styles for animation
 					sceneOptions.inStyle = getStyle(sceneOptions.inTransition, thisDimension, sceneDimension);
-					sceneOptions.inStyle.zIndex = 1100;
+					sceneOptions.inStyle.zIndex = highZIndex;
 					sceneOptions.waitStyle = getStyle('none', thisDimension, sceneDimension);
 					sceneOptions.outStyle = getStyle(sceneOptions.outTransition, thisDimension, sceneDimension);
-					sceneOptions.outStyle.zIndex = 1000;
 					
 					//save animation setting
 					sceneOptions.inAnimation = {
@@ -334,6 +342,7 @@
 						.delay(sceneOptions.wait)
 						.queue(triggerWaitEnd)
 						//out animation
+						.queue(setLowerZIndex)
 						.animate(sceneOptions.outStyle, sceneOptions.outAnimation)
 						.queue(triggerAnimationEnd)
 						//hide
