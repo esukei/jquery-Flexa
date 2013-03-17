@@ -28,17 +28,28 @@
 </header>
 <div id="main">
 	<section>
+		<!--
+			現れるときと消えるときの時間 1000ms(1秒) 、フェードイン・アウトのエフェクト
+			という全体設定です
+		-->
 		<ol class="animation"
 			data-flexa-enable="true"
 			data-duration="1000"
 			data-trantision="fade">
+			<!-- 何も設定していないシーンは全体設定のままです -->
 			<li class="scene-1">Scene - 1</li>
+			<!--
+				シーンに設定を書くと全体設定を上書きできます
+				時間を5000ms(5秒)に上書きします
+			-->
 			<li class="scene-2"
-				data-duration="5000"
-				data-out-duration="500">Scene - 2</li>
+				data-duration="5000">Scene - 2</li>
+			<!--
+				現れるときのエフェクトだけを左からにします
+				（消えるときは全体設定のフェードアウトのままです）
+			-->
 			<li class="scene-3"
-				data-in-transition="left"
-				data-out-transition="right">Scene - 3</li>
+				data-in-transition="left">Scene - 3</li>
 		</ol>
 		<script src="https://gist.github.com/esukei/5026328.js"></script>
 	</section>
@@ -50,9 +61,7 @@
 			<li><a href="local.html">個別設定</a></li>
 			<li><a href="time.html">時間</a></li>
 			<li><a href="timing.html">タイミング</a></li>
-			<li><a href="effect.html">エフェクト</a></li>
-			<li><a href="slideshow.html">スライドショー</a></li>
-			<li><a href="animation.html">アニメーション</a></li>
+			<li><a href="transition.html">切り替えエフェクト</a></li>
 		</ul>
 	</nav>
 </div>

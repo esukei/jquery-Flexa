@@ -3,10 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<title>Flexa - Flexible Animation builder : jQuery Plugin</title>
-	<meta name="description" content="Flexa 基本 - アニメーションを簡単に作成できるjQueryプラグインのデモページ">
+	<meta name="description" content="Flexa トランジション - アニメーションを簡単に作成できるjQueryプラグインのデモページ">
 	<meta name="keyword" content="Flexa, jQuery, jQuery plugin,jQuery プラグイン, Animation, アニメーション">
 	<meta property="og:title" content="Flexa demos">
-	<meta property="og:description" content="Flexa 基本 - アニメーションを簡単に作成できるjQueryプラグインのデモページ">
+	<meta property="og:description" content="Flexa 個別設定 - アニメーションを簡単に作成できるjQueryプラグインのデモページ">
 	<meta property="og:url" content="http://demos.s-uni.net/flexa/">
 	<meta property="fb:app_id" content="146970392129352">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
@@ -28,14 +28,34 @@
 </header>
 <div id="main">
 	<section>
-		<!-- data-flexa-enable="true"と書くだけで勝手にアニメーションします -->
+		<!-- トランジションを見やすくするため全体のタイミングをsequenceに -->
 		<ol class="animation"
-			data-flexa-enable="true">
-			<li class="scene-1">Scene - 1</li>
-			<li class="scene-2">Scene - 2</li>
-			<li class="scene-3">Scene - 3</li>
+			data-flexa-enable="true"
+			data-in-timing="sequence">
+			<!-- フェードイン・アウト -->
+			<li class="scene-1"
+				data-transition="fade">Scene - 1</li>
+			<!-- 左から出てきて左に消える -->
+			<li class="scene-2"
+				data-transition="left">Scene - 2</li>
+			<!-- 上から出てきて上へ消える -->
+			<li class="scene-3"
+				data-transition="top">Scene - 3</li>
+			<!-- 右から出てきて左へ消える -->
+			<li class="scene-4"
+				data-in-transition="right"
+				data-out-transition="left">Scene - 4</li>
+			<!--
+				スペース区切りでキーワードを複数設定すると
+				斜め移動や、同時にフェードさせることが出来ます。
+				左上から現れて、
+			 	フェードしながら右下に消える
+			-->
+			<li class="scene-5"
+				data-in-transition="left top"
+				data-out-transition="right bottom fade">Scene - 5</li>
 		</ol>
-		<script src="https://gist.github.com/esukei/5026288.js"></script>
+		<script src="https://gist.github.com/esukei/5181268.js"></script>
 	</section>
 	<nav id="main-nav">
 		<ul>

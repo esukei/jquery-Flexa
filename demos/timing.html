@@ -3,10 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<title>Flexa - Flexible Animation builder : jQuery Plugin</title>
-	<meta name="description" content="Flexa 基本 - アニメーションを簡単に作成できるjQueryプラグインのデモページ">
+	<meta name="description" content="Flexa タイミング - アニメーションを簡単に作成できるjQueryプラグインのデモページ">
 	<meta name="keyword" content="Flexa, jQuery, jQuery plugin,jQuery プラグイン, Animation, アニメーション">
 	<meta property="og:title" content="Flexa demos">
-	<meta property="og:description" content="Flexa 基本 - アニメーションを簡単に作成できるjQueryプラグインのデモページ">
+	<meta property="og:description" content="Flexa 個別設定 - アニメーションを簡単に作成できるjQueryプラグインのデモページ">
 	<meta property="og:url" content="http://demos.s-uni.net/flexa/">
 	<meta property="fb:app_id" content="146970392129352">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
@@ -28,14 +28,29 @@
 </header>
 <div id="main">
 	<section>
-		<!-- data-flexa-enable="true"と書くだけで勝手にアニメーションします -->
+		<!-- 全体設定はデフォルト -->
 		<ol class="animation"
 			data-flexa-enable="true">
+			<!-- 最初のシーンはデフォルト -->
 			<li class="scene-1">Scene - 1</li>
-			<li class="scene-2">Scene - 2</li>
-			<li class="scene-3">Scene - 3</li>
+			<!-- 現れるときのタイミングを cross (前のシーンとかぶる) -->
+			<li class="scene-2"
+				data-in-timing="cross">Scene - 2</li>
+			<!-- 現れるときのタイミングを sequence (前のシーンが消えてから) -->
+			<li class="scene-3"
+				data-in-timing="sequence">Scene - 3</li>
+			<!-- 現れるときのタイミングを sequence -->
+			<li class="scene-4"
+				data-in-timing="sequence">Scene - 4</li>
+			<!--
+				現れるときのタイミングを same (前のシーンと同時)、
+			 	さらに、delay (エフェクトの始まりを遅くする) を 500ms (0.5秒)
+			-->
+			<li class="scene-5"
+				data-in-timing="same"
+				data-in-delay="500">Scene - 5</li>
 		</ol>
-		<script src="https://gist.github.com/esukei/5026288.js"></script>
+		<script src="https://gist.github.com/esukei/5181266.js"></script>
 	</section>
 	<nav id="main-nav">
 		<ul>

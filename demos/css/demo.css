@@ -71,7 +71,9 @@ header h1 .Flexa {
 
 .animation .scene-1,
 .animation .scene-2,
-.animation .scene-3 {
+.animation .scene-3,
+.animation .scene-4,
+.animation .scene-5 {
 	line-height: 360px;
 	text-align: center;
 	font-size: 40px;
@@ -84,6 +86,12 @@ header h1 .Flexa {
 }
 .animation .scene-3 {
 	background-color: #0066FF;
+}
+.animation .scene-4 {
+	background-color: #FFFF66;
+}
+.animation .scene-5 {
+	background-color: #FF66FF;
 }
 
 .gist {
